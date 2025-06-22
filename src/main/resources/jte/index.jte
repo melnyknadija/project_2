@@ -1,14 +1,13 @@
 @param String message
 @param String userName
 @param int age
-@param List<String> items
-@param Map<String, String> userInfo
+@param java.util.List<String> items
+@param java.util.Map<String, String> userInfo
 
 @template.layout(title = "Головна сторінка")
 @content
 <h1>${message}</h1>
 <p>Привіт, ${userName}! Тобі ${age} років.</p>
-
 @if(age > 18)
     <p>Ти повнолітній.</p>
 @else
@@ -24,24 +23,17 @@
 
 <h2>Інформація про користувача:</h2>
 <ul>
-    @for(Map.Entry<String, String> entry : userInfo.entrySet())
+    @for(java.util.Map.Entry<String, String> entry : userInfo.entrySet())
         <li>${entry.getKey()}: ${entry.getValue()}</li>
     @endfor
 </ul>
-
-@* Це однорядковий коментар JTE *@
-
-@*
-* Це багаторядковий коментар JTE.
-* Він не буде відображатися у вихідному HTML.
-*@
 
 <h2>Приклад виклику компонента:</h2>
 @template.components.greeting(name = "Анна", greetingMessage = "Доброго дня")
 
 <h2>Приклад з параметрами за замовчуванням:</h2>
-@template.components.greeting()
-@template.components.greeting(name = "Петро")
+@template.components.greeting() // <--- Змінено
+@template.components.greeting(name = "Петро") // <--- Змінено
 @template.components.greeting(greetingMessage = "Здоровенькі були")
 
 <h2>Список з varargs:</h2>
